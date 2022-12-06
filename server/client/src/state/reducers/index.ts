@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
-import { authReducer } from './authReducer';
+
+const authReducer = (state = {}, action: any): typeof state => {
+  console.log(action);
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
 
 const rootReducer = combineReducers({
   auth: authReducer,
