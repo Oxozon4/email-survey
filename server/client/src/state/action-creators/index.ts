@@ -4,8 +4,7 @@ import { ActionType } from '../action-types';
 
 export const fetchUser = () => {
   return async (dispatch: Dispatch) => {
-    axios
-      .get('/api/current_user')
-      .then((res) => dispatch({ type: ActionType.FETCH_USER, payload: res }));
+    const res = await axios.get('/api/current_user');
+    dispatch({ type: ActionType.FETCH_USER, payload: res });
   };
 };
