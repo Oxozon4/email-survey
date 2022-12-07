@@ -1,9 +1,10 @@
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const auth = useTypedSelector((state) => state.auth);
 
-  const renderContent = () => {
+  const renderHeaderContent = () => {
     switch (auth) {
       case null:
         return;
@@ -25,10 +26,10 @@ const Header: React.FC = () => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <a href="/" className="left brand-logo">
+        <Link to={auth ? '/surveys' : '/'} className="left brand-logo">
           Emaily
-        </a>
-        <ul className="right">{renderContent()}</ul>
+        </Link>
+        <ul className="right">{renderHeaderContent()}</ul>
       </div>
     </nav>
   );
