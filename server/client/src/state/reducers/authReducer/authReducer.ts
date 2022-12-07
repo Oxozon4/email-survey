@@ -3,10 +3,8 @@ import { FetchUserAction } from '../../actions';
 
 interface UserModel {}
 
-const initialState = null;
-
 export const authReducer = (
-  state = initialState,
+  state = null,
   action: FetchUserAction
 ): null | UserModel | false => {
   console.log(action);
