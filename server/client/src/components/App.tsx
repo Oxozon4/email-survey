@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <div>
           <Header />
           <Route exact path="/" component={Landing}></Route>
-          <Route exact path="/survey" component={Dashboard}></Route>
+          <Route exact path="/surveys" component={Dashboard}></Route>
           <Route path="/survey/new" component={SurveyNew}></Route>
         </div>
       </BrowserRouter>
