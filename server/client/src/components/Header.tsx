@@ -1,5 +1,6 @@
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 
 const Header: React.FC = () => {
   const auth = useTypedSelector((state) => state.auth);
@@ -15,11 +16,14 @@ const Header: React.FC = () => {
           </li>
         );
       default:
-        return (
-          <li>
+        return [
+          <li key="header-payment">
+            <Payments />
+          </li>,
+          <li key="header-logout">
             <a href="/api/logout">Logout</a>
-          </li>
-        );
+          </li>,
+        ];
     }
   };
 
