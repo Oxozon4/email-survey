@@ -1,8 +1,11 @@
 import { ActionType } from '../action-types';
 
-interface UserModel {}
+interface UserModel {
+  googleID: string;
+  credits: string;
+}
 
 export interface FetchUserAction {
   type: ActionType.FETCH_USER;
-  payload: null | {} | false;
+  payload: UserModel;
 }

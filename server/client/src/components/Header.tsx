@@ -4,7 +4,6 @@ import Payments from './Payments';
 
 const Header: React.FC = () => {
   const auth = useTypedSelector((state) => state.auth);
-
   const renderHeaderContent = () => {
     switch (auth) {
       case null:
@@ -19,6 +18,9 @@ const Header: React.FC = () => {
         return [
           <li key="header-payment">
             <Payments />
+          </li>,
+          <li key="header-credits" style={{ margin: '0px 10px' }}>
+            Credits: {(auth as any).credits}
           </li>,
           <li key="header-logout">
             <a href="/api/logout">Logout</a>
