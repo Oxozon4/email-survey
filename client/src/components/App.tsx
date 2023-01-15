@@ -3,8 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 import Header from './Header';
 import Landing from './Landing';
+import Dashboard from './Dashboard';
 
-const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
 const App: React.FC = () => {
