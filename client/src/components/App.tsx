@@ -4,8 +4,7 @@ import { useActions } from '../hooks/useActions';
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import SurveyNew from './surveys/SurveyNew';
 
 const App: React.FC = () => {
   const { fetchUser } = useActions();

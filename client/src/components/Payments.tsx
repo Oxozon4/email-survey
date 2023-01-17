@@ -1,9 +1,9 @@
 import StripeCheckout from 'react-stripe-checkout';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+// import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 
 const Payments: React.FC = () => {
-  const auth = useTypedSelector((state) => state.auth);
+  // const auth = useTypedSelector((state) => state.auth);
   const { handleToken } = useActions();
 
   return (
