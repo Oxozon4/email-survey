@@ -14,16 +14,14 @@ const App: React.FC = () => {
   }, [fetchUser]);
 
   return (
-    <div className="container">
-      <BrowserRouter>
-        <div>
-          <Header />
-          <Route exact path="/" component={Landing}></Route>
-          <Route exact path="/surveys" component={Dashboard}></Route>
-          <Route path="/survey/new" component={SurveyNew}></Route>
-        </div>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Header />
+        <Route exact path="/" component={Landing}></Route>
+        <Route exact path="/surveys" component={Dashboard}></Route>
+        <Route path="/survey/new" component={SurveyNew}></Route>
+      </div>
+    </BrowserRouter>
   );
 };
 
