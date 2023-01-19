@@ -49,7 +49,6 @@ const SurveyForm: React.FC = ({ handleSubmit }: any) => {
   return (
     <div>
       <form onSubmit={handleSubmit((values: any) => console.log(values))}>
-        {/* <Field type="text" name="surveyTitle" component="input" /> */}
         {renderFields()}
         <Link to="/surveys" className="red btn-flat white-text">
           Cancel
