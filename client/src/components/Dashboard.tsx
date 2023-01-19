@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   return (
     <div>
       <div className="fixed-action-btn">

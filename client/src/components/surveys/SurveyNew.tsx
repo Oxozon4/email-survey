@@ -1,6 +1,6 @@
 import SurveyForm from './SurveyForm';
 
-const SurveyNew = () => {
+const SurveyNew: React.FC = () => {
   return (
     <div>
       <SurveyForm />
