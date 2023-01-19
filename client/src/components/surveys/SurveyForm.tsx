@@ -1,7 +1,11 @@
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
 const SurveyForm = () => {
-  return <div>SurveyForm</div>;
+  return (
+    <div>
+      <Field type="text" name="surveyTitle" component="input" />
+    </div>
+  );
 };
 
 export default reduxForm({
