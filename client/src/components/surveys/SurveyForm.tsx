@@ -1,38 +1,34 @@
 import { reduxForm, Field } from 'redux-form';
+import _ from 'lodash';
 import SurveyField from './SurveyField';
 
 interface Props {}
 
+interface InputFieldProps {
+  label: string;
+  name: string;
+}
+
+const FIELDS: InputFieldProps[] = [
+  { label: 'Survey Title', name: 'title' },
+  { label: 'Subject Line', name: 'subject' },
+  { label: 'Email Body', name: 'body' },
+  { label: 'Recipient List', name: 'emails' },
+];
+
 const SurveyForm: React.FC = ({ handleSubmit }: any) => {
   const renderFields = () => {
-    return (
-      <div>
+    return _.map(FIELDS, ({ label, name }: InputFieldProps) => {
+      return (
         <Field
-          label="Survey Title"
-          type="text"
-          name="title"
+          key={name}
           component={SurveyField}
-        />
-        <Field
-          label="Subject Line"
           type="text"
-          name="subject"
-          component={SurveyField}
+          label={label}
+          name={name}
         />
-        <Field
-          label="Email Body"
-          type="text"
-          name="body"
-          component={SurveyField}
-        />
-        <Field
-          label="Recipient List"
-          type="text"
-          name="emails"
-          component={SurveyField}
-        />
-      </div>
-    );
+      );
+    });
   };
 
   return (
