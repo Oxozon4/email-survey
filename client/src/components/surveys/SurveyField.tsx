@@ -1,7 +1,9 @@
-const SurveyField: React.FC = () => {
+import { InjectedFormProps } from 'redux-form';
+
+const SurveyField: React.FC<InjectedFormProps> = ({ input, meta }: any) => {
   return (
     <div>
-      <input />
+      <input {...input} />
     </div>
   );
 };
