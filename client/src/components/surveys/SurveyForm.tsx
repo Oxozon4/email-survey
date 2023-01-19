@@ -2,6 +2,7 @@ import { reduxForm, Field } from 'redux-form';
 import _ from 'lodash';
 import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
+import validateEmails from '../../utils/validateEmails';
 
 interface Props {}
 
@@ -66,6 +67,8 @@ const SurveyForm: React.FC = ({ handleSubmit }: any) => {
 
 const validate = (values: FormValues): FormErrors => {
   const errors: FormErrors = {};
+
+  errors.emails = validateEmails(values.emails || '');
 
   _.each(FIELDS, ({ name }) => {
     if (!values[name]) {
