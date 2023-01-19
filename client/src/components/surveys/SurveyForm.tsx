@@ -11,6 +11,7 @@ interface InputFieldProps {
 }
 
 interface FormValues {
+  [key: string]: string;
   body: string;
   emails: string;
   subject: string;
@@ -18,6 +19,7 @@ interface FormValues {
 }
 
 interface FormErrors {
+  [key: string]: string | undefined;
   body?: string;
   emails?: string;
   subject?: string;
@@ -65,9 +67,11 @@ const SurveyForm: React.FC = ({ handleSubmit }: any) => {
 const validate = (values: FormValues): FormErrors => {
   const errors: FormErrors = {};
 
-  if (!values.title) {
-    errors.title = 'You must provide a title';
-  }
+  _.each(FIELDS, ({ name }) => {
+    if (!values[name]) {
+      errors[name] = `You must provide a value`;
+    }
+  });
 
   return errors;
 };

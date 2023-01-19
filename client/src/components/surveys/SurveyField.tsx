@@ -8,8 +8,10 @@ const SurveyField: React.FC<InjectedFormProps> = ({
   return (
     <div>
       <label>{label}</label>
-      <input {...input} />
-      {touched && error}
+      <input {...input} style={{ marginBottom: '5px' }} />
+      <div className="red-text" style={{ marginBottom: '20px' }}>
+        {touched && error}
+      </div>
     </div>
   );
 };
