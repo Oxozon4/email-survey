@@ -10,6 +10,20 @@ interface InputFieldProps {
   name: string;
 }
 
+interface FormValues {
+  body: string;
+  emails: string;
+  subject: string;
+  title: string;
+}
+
+interface FormErrors {
+  body?: string;
+  emails?: string;
+  subject?: string;
+  title?: string;
+}
+
 const FIELDS: InputFieldProps[] = [
   { label: 'Survey Title', name: 'title' },
   { label: 'Subject Line', name: 'subject' },
@@ -49,6 +63,17 @@ const SurveyForm: React.FC = ({ handleSubmit }: any) => {
   );
 };
 
+const validate = (values: FormValues): FormErrors => {
+  const errors: FormErrors = {};
+
+  if (!values.title) {
+    errors.title = 'You must provide a title';
+  }
+
+  return errors;
+};
+
 export default reduxForm<{}, Props>({
   form: 'surveyForm',
+  validate,
 })(SurveyForm);
