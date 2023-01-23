@@ -4,8 +4,6 @@ import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
 
-interface Props {}
-
 interface InputFieldProps {
   label: string;
   name: string;
@@ -79,7 +77,7 @@ const validate = (values: FormValues): FormErrors => {
   return errors;
 };
 
-export default reduxForm<{}, Props>({
+export default reduxForm<{}, {}>({
   form: 'surveyForm',
   validate,
 })(SurveyForm);
