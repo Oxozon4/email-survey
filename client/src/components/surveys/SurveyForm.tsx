@@ -4,6 +4,10 @@ import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
 
+interface Props {
+  onSurveySubmit: Function;
+}
+
 interface InputFieldProps {
   label: string;
   name: string;
@@ -32,7 +36,7 @@ const FIELDS: InputFieldProps[] = [
   { label: 'Recipient List', name: 'emails' },
 ];
 
-const SurveyForm: React.FC = ({ handleSubmit }: any) => {
+const SurveyForm: React.FC = ({ handleSubmit, onSurveySubmit }: any) => {
   const renderFields = () => {
     return _.map(FIELDS, ({ label, name }: InputFieldProps) => {
       return (
@@ -49,7 +53,7 @@ const SurveyForm: React.FC = ({ handleSubmit }: any) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit((values: any) => console.log(values))}>
+      <form onSubmit={handleSubmit(onSurveySubmit)}>
         {renderFields()}
         <Link to="/surveys" className="red btn-flat white-text">
           Cancel
@@ -77,7 +81,7 @@ const validate = (values: FormValues): FormErrors => {
   return errors;
 };
 
-export default reduxForm<{}, {}>({
+export default reduxForm<Props, {}>({
   form: 'surveyForm',
   validate,
 })(SurveyForm);
