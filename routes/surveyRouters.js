@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
-const Mailer = require('../services/Mailer');
-const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
+// Uncoment if you registered an account on Sendgrid API & have API key
+// const Mailer = require('../services/Mailer');
+// const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = (app) => {
@@ -24,10 +25,11 @@ module.exports = (app) => {
       dateSent: Date.now(),
     });
 
-    const mailer = new Mailer(survey, surveyTemplate(survey));
+    // Uncoment if you registered an account on Sendgrid API & have API key
+    // const mailer = new Mailer(survey, surveyTemplate(survey));
 
     try {
-      await mailer.send();
+      // Uncoment if you registered an account on Sendgrid API & have API key      // await mailer.send();
       await survey.save();
       req.user.credits -= 1;
       const user = await req.user.save();
