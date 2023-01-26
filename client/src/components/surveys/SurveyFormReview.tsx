@@ -2,13 +2,19 @@ import { connect } from 'react-redux';
 import { formFields } from './formFields';
 import _ from 'lodash';
 import { useActions } from '../../hooks/useActions';
+import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
-interface SurveyFormReviewProps {
-  onCancel: () => void;
-  formValues: any;
+interface PathParamsType {
+  param1: string;
 }
 
-const SurveyFormReview = ({ onCancel, formValues }: SurveyFormReviewProps) => {
+type PropsType = RouteComponentProps<PathParamsType> & {
+  onCancel: () => void;
+  formValues: any;
+};
+
+const SurveyFormReview = ({ onCancel, formValues, history }: PropsType) => {
   const { submitSurvey } = useActions();
 
   const reviewFields = _.map(formFields, ({ name, label }) => {
@@ -32,7 +38,7 @@ const SurveyFormReview = ({ onCancel, formValues }: SurveyFormReviewProps) => {
       </button>
       <button
         className="green btn-flat right white-text"
-        onClick={() => submitSurvey(formValues)}
+        onClick={() => submitSurvey({ values: formValues, history })}
       >
         Send Survey
         <i className="material-icons">email</i>
@@ -46,4 +52,4 @@ const mapStateToProps = (state: any) => {
   return { formValues: state.form.surveyForm.values };
 };
 
-export default connect(mapStateToProps)(SurveyFormReview);
+export default connect(mapStateToProps)(withRouter(SurveyFormReview));

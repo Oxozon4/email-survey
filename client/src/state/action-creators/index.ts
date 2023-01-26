@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import { Token } from 'react-stripe-checkout';
+import { History } from 'history';
 
 export const fetchUser = () => {
   return async (dispatch: Dispatch) => {
@@ -17,9 +18,17 @@ export const handleToken = (token: Token) => {
   };
 };
 
-export const submitSurvey = (values: any) => {
+export const submitSurvey = ({
+  values,
+  history,
+}: {
+  values: any;
+  history: History;
+}) => {
   return async (dispatch: Dispatch) => {
     const res = await axios.post('/api/surveys', values);
+
+    history.push('/surveys');
     dispatch({ type: ActionType.FETCH_USER, payload: res.data });
   };
 };
