@@ -84,4 +84,5 @@ const validate = (values: FormValues): FormErrors => {
 export default reduxForm<{}, Props>({
   form: 'surveyForm',
   validate,
+  destroyOnUnmount: false,
 })(SurveyForm);

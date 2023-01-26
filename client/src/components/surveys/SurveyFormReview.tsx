@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+
 interface SurveyFormReviewProps {
   onCancel: () => void;
 }
@@ -13,4 +15,9 @@ const SurveyFormReview = ({ onCancel }: SurveyFormReviewProps) => {
   );
 };
 
-export default SurveyFormReview;
+const mapStateToProps = (state: any) => {
+  console.log(state);
+  return { formValues: state.form.surveyForm.values };
+};
+
+export default connect(mapStateToProps)(SurveyFormReview);
