@@ -12,7 +12,7 @@ interface Props {
 interface FormValues {
   [key: string]: string;
   body: string;
-  emails: string;
+  recipients: string;
   subject: string;
   title: string;
 }
@@ -20,7 +20,7 @@ interface FormValues {
 interface FormErrors {
   [key: string]: string | undefined;
   body?: string;
-  emails?: string;
+  recipients?: string;
   subject?: string;
   title?: string;
 }
@@ -59,7 +59,7 @@ const SurveyForm: React.FC = ({ handleSubmit, onSurveySubmit }: any) => {
 const validate = (values: FormValues): FormErrors => {
   const errors: FormErrors = {};
 
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.recipients || '');
 
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
