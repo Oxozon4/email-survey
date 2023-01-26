@@ -81,7 +81,7 @@ const validate = (values: FormValues): FormErrors => {
   return errors;
 };
 
-export default reduxForm<Props, {}>({
+export default reduxForm<{}, Props>({
   form: 'surveyForm',
   validate,
 })(SurveyForm);
