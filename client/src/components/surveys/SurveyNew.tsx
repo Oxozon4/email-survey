@@ -8,7 +8,11 @@ const SurveyNew: React.FC = () => {
   return (
     <div>
       {showFormReview ? (
-        <SurveyFormReview />
+        <SurveyFormReview
+          onCancel={() => {
+            setShowFormReview(false);
+          }}
+        />
       ) : (
         <SurveyForm
           onSurveySubmit={() => {
