@@ -16,3 +16,7 @@ export const handleToken = (token: Token) => {
     dispatch({ type: ActionType.FETCH_USER, payload: res.data });
   };
 };
+
+export const submitSurvey = (values: any) => {
+  return { type: ActionType.SUBMIT_SURVEY };
+};

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { formFields } from './formFields';
 import _ from 'lodash';
+import { useActions } from '../../hooks/useActions';
 
 interface SurveyFormReviewProps {
   onCancel: () => void;
@@ -8,6 +9,8 @@ interface SurveyFormReviewProps {
 }
 
 const SurveyFormReview = ({ onCancel, formValues }: SurveyFormReviewProps) => {
+  const { submitSurvey } = useActions();
+
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -27,7 +30,10 @@ const SurveyFormReview = ({ onCancel, formValues }: SurveyFormReviewProps) => {
       >
         Back
       </button>
-      <button className="green btn-flat right white-text">
+      <button
+        className="green btn-flat right white-text"
+        onClick={() => submitSurvey(formValues)}
+      >
         Send Survey
         <i className="material-icons">email</i>
       </button>
