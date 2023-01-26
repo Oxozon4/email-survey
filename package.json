@@ -11,7 +11,9 @@
     "start": "node index.js",
     "server": "nodemon -L index.js",
     "client": "npm run start --prefix client",
+    "client-wsl": "npm run start-wsl --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev-wsl": "concurrently \"npm run server\" \"npm run client-wsl\"",
     "railway-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
