@@ -1,3 +1,6 @@
+const _ = require('lodash');
+const Path = require('path-parser');
+const { URL } = require('url');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
@@ -12,8 +15,11 @@ module.exports = (app) => {
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    console.log(req.body);
-    res.send({});
+    const events = _.map(req.body, (event) => {
+      const pathname = new URL(event.url).pathname;
+      const p = new Path(`/api/surveys/:surveyId/:choice`);
+      console.log(p.test(pathname));
+    });
   });
 
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
@@ -34,7 +40,8 @@ module.exports = (app) => {
     // const mailer = new Mailer(survey, surveyTemplate(survey));
 
     try {
-      // Uncoment if you registered an account on Sendgrid API & have API key      // await mailer.send();
+      // Uncoment if you registered an account on Sendgrid API & have API key
+      // await mailer.send();
       await survey.save();
       req.user.credits -= 1;
       const user = await req.user.save();
