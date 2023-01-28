@@ -27,7 +27,7 @@ const SurveyList = ({ surveys }: PropsType) => {
   }, []);
 
   const renderSurveys = () => {
-    return surveys.map((survey) => {
+    return surveys.reverse().map((survey) => {
       return (
         <div key={survey._id} className="card darken-1">
           <div className="card-content">
