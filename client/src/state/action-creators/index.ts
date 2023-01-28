@@ -32,3 +32,10 @@ export const submitSurvey = ({
     dispatch({ type: ActionType.FETCH_USER, payload: res.data });
   };
 };
+
+export const fetchSurveys = () => {
+  return async (dispatch: Dispatch) => {
+    const res = await axios.get('/api/surveys');
+    dispatch({ type: ActionType.FETCH_SURVEYS, payload: res.data });
+  };
+};
